@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+.next/
+out/
+build/
+
+# Environment variables (Bảo mật - Tuyệt đối không commit)
+.env
+.env*.local
+
+# IDEs & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# TypeScript & Cache
+*.tsbuildinfo
+.eslintcache
+
+# Logs
+logs/
+*.log
+npm-debug.log*

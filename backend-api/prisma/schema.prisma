@@ -1,0 +1,28 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id          String    @id @default(uuid())
+  email       String    @unique
+  password    String
+  name        String?
+  role        Role      @default(USER)
+  isActive    Boolean   @default(false)
+  codeId      String? // Mã OTP kích hoạt hoặc reset mật khẩu
+  codeExpired DateTime? // Thời hạn hết hạn của mã OTP
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("users") // Đặt tên bảng thực tế trong PostgreSQL là "users"
+}
