@@ -25,4 +25,20 @@ export class UsersService {
       }
     });
   }
+  //get all users (admin require)
+  async findAll(){
+    return await this.prisma.user.findMany({
+      select:{
+        id:true,
+        name: true,
+        email: true,
+        role: true,
+        isActive: true,
+        createdAt: true,
+      },
+      orderBy:{
+        createdAt:'desc'
+      }
+    });
+  }
 }
